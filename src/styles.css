@@ -1,0 +1,111 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-status-scheduled: var(--status-scheduled);
+  --color-status-progress: var(--status-progress);
+  --color-status-completed: var(--status-completed);
+  --color-status-cancelled: var(--status-cancelled);
+  --color-status-noshow: var(--status-noshow);
+  --color-sage: var(--sage);
+  --color-sage-foreground: var(--sage-foreground);
+  --color-blush: var(--blush);
+  --color-blush-foreground: var(--blush-foreground);
+  --font-display: "Fraunces", serif;
+  --font-body: "Outfit", sans-serif;
+}
+
+:root {
+  --radius: 0.75rem;
+  --background: oklch(0.975 0.012 90);
+  --foreground: oklch(0.27 0.03 55);
+  --card: oklch(0.995 0.006 90);
+  --card-foreground: oklch(0.27 0.03 55);
+  --popover: oklch(0.995 0.006 90);
+  --popover-foreground: oklch(0.27 0.03 55);
+  --primary: oklch(0.5 0.09 155);
+  --status-scheduled: oklch(0.55 0.12 250);
+  --status-progress: oklch(0.7 0.15 70);
+  --status-completed: oklch(0.55 0.12 150);
+  --status-cancelled: oklch(0.6 0.01 260);
+  --status-noshow: oklch(0.56 0.19 25);
+  --primary-foreground: oklch(0.98 0.01 120);
+  --secondary: oklch(0.93 0.02 90);
+  --secondary-foreground: oklch(0.35 0.04 60);
+  --muted: oklch(0.94 0.015 90);
+  --muted-foreground: oklch(0.5 0.03 60);
+  --accent: oklch(0.72 0.1 45);
+  --accent-foreground: oklch(0.25 0.03 55);
+  --destructive: oklch(0.577 0.2 27);
+  --destructive-foreground: oklch(0.98 0.01 90);
+  --border: oklch(0.89 0.015 80);
+  --input: oklch(0.89 0.015 80);
+  --ring: oklch(0.5 0.09 155);
+  --sage: oklch(0.88 0.04 150);
+  --sage-foreground: oklch(0.35 0.06 155);
+  --blush: oklch(0.9 0.04 40);
+  --blush-foreground: oklch(0.42 0.08 40);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+@utility animate-fade-up {
+  animation: fade-up 0.5s ease-out both;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Touch tablet: no double-tap zoom delay, no grey tap flash, no accidental text selection on controls */
+html { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+button, [role="button"], [role="tab"], [role="option"], a { user-select: none; -webkit-user-select: none; }

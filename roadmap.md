@@ -1,0 +1,103 @@
+# Roadmap
+
+- [x] Update the existing scheduler only around the specification's goals and non-goals.
+- [x] Keep Today as the main dashboard and entry workspace.
+- [x] Keep Today as the dashboard; place Week and Month calendar switching inside the Schedule tab.
+- [x] Use the specification's weekly hours: Sun 11:30–1:30 and 7:30–10:30; Mon/Wed/Thu 10:30–1:30 and 7:30–10:30; Tue 7:30–10:30; Fri/Sat closed.
+- [x] Keep implementation focused on one practitioner, calendar scheduling, clients, payments, hours/gaps, blocked time, shared slots, and past-date safety.
+- [x] Exclude online self-booking, messaging, cloud sync, multi-practitioner/location, insurance, EMR charting, and native mobile work.
+- [x] Keep client payment and billing info private, visible only to the practitioner.
+- [x] Rename the Today tab to Dashboard; make booking Notes clearly optional with a helpful placeholder.
+- [x] Reject unintelligible booking notes (keyboard mashing, repeated characters, symbol strings).
+- [x] Show a confirmation popup before the Lock button locks the screen.
+- [x] De-crowd the Schedule page headers; fix "Calendar Schedule" title positioning.
+- [x] Do not show expected revenue on the dashboard.
+- [x] Start/End appointments with status display
+- [x] "Appointment confirmed" popup + highlight new appointment in calendar
+- [x] Color-coded statuses + No-show
+- [x] Today / Go to date toggle
+- [x] Password for start/end, payments, viewing billing
+- [x] Billing tab: balances, no-show notes, payments, report, CSV (password to view)
+- [x] End popup with duration + amount owed (no password)
+- [x] Automatic no-show when slot passes unstarted
+- [x] Shared appointments: time each client separately, bill each on their own duration; Reschedule only for Scheduled.
+- [x] Remove the top "Record payment" button and "Total owed by clients" figure from Billing.
+- [x] Payment report rows open full appointment/payment details.
+- [x] Persistent active-session banner; app usable during a session, no second session start.
+- [x] Merge Clients and Billing into one page.
+- [x] Sentence-case "Actual duration:" label + end-session confirmation dialog with elapsed time
+- [x] Show elapsed minutes under "Actual duration:"
+- [x] Correct in-progress appointment start times, end times and booked length
+
+- [x] Clean up Correct times: subtle pencil trigger, tidier dialog
+- [x] Show "Actual duration:" as duration first, then the start–end times
+- [x] Make the "Actual duration:" label bold
+- [x] Ask for the password inline on the page instead of a separate popup
+- [x] Password confirms automatically while typing — no Confirm button after entering it
+- [x] Display the client list on Clients & Billing as in the earliest version
+- [x] Show payment status when clicking a completed appointment
+- [x] Remove tap-to-view money owed; billing stays practitioner-only
+- [x] Remove Collection priorities list from Billing
+- [x] "View billing info" button per client: full appointment + payment + balance details
+- [x] Merge Client list / Billing tabs into one scrolling page
+
+- [x] Replace the upper client list with Client balances; move Record payment into the client billing info window.
+- [x] Add a "Clients" section header on Clients & Billing matching the "Billing" header.
+
+- [x] Fresh installs start empty (no demo clients, appointments or payments).
+- [x] No-shows are marked by the practitioner once the start time passes (never automatically) and billed the full booked length; a no-show can be undone.
+- [x] Booking never offers or accepts a start time that has already passed.
+- [x] Payments are dated by the local day they were recorded (reports, CSV, history).
+- [x] Blocked time needs a reason and cannot cover a booked appointment; removing blocks or date overrides needs the password.
+- [x] Public booking reuses a client record only when both name and phone match.
+- [x] Dashboard shows the number of clients booked today.
+- [x] Remove demo clients (and their appointments and payments) left by older versions; real records are untouched.
+- [x] Backup page: download one backup file of all records, hours and password; restore from a file (password-gated, saves a safety copy first); Dashboard reminds when no backup in 7 days.
+- [x] Edit or delete a payment (amount, method, date, notes) from the client billing window or Recent payments; both ask "Are you sure?" (no password).
+- [x] Edit a client's name and phone; archive a client (only with a zero balance and no scheduled appointments) and restore them from search.
+- [x] Appointment clients stay Scheduled until the practitioner marks them No-show — including the waiting client on a shared appointment.
+- [x] The only password prompt is entering Admin; every other action asks "Are you sure?".
+- [x] Changing weekly hours or a date's hours lists upcoming bookings that would fall outside them before saving (they are never moved).
+- [x] Week view hatches closed days, grays past days and fits a tablet. No hours text in day headers and no tap-to-book: booking is by the New appointment / Book Appointment buttons only.
+- [x] Month view grays past days, marks closed days and today.
+- [x] Booking: six common lengths plus an "Other length" list; a day with no times offers "Next available".
+- [x] Works offline after one online visit (service worker saves every page and its code) and can be installed as an app (manifest + icons).
+- [x] Upcoming bookings left outside business hours after an hours change are flagged in amber (week and month views, appointment window, Dashboard notice) until rescheduled or cancelled.
+- [x] Rescheduling can be abandoned with "Cancel reschedule" on any step; asks "Are you sure?" only if something was changed, and the appointment keeps its original time.
+- [x] Exit Admin asks "Are you sure?" before locking.
+- [x] Booking "Who is coming?" has a search (name or phone); picked clients stay on top; no match offers "Add as new client".
+- [x] Confirmation popups keep their text while closing (no empty flash).
+- [x] Password reset warning mentions restoring from a backup file.
+- [x] Pause / Resume a running session; paused time is never billed (timer freezes, banner says Session paused, End and Session complete show paused time, Correct times keeps it out of the charge).
+- [x] End session asks "Are you sure?" like Start does.
+- [x] Ending a session from the top banner now shows the Session complete window.
+- [x] Admin tabs renamed: View Schedule, Edit Hours.
+- [x] Client billing window: edit a finished session or no-show (start/end, paused minutes, charge from time or typed, notes).
+- [x] Adjust a client's balance: enter the correct balance and a reason; saved as an adjustment (listed, removable, counted in the report).
+- [x] Booking notes accept any alphabet (e.g. Hebrew), numbers and phone numbers, and words like "lengths"; gibberish is still rejected.
+- [x] Dashboard, Schedule, Book and Hours move to the new day at midnight when the tablet stays open.
+- [x] Undoing a no-show or ending a timed session clears a hand-set charge, so Correct times re-bills the session.
+- [x] Correcting a booked length re-bills a no-show on the same appointment (hand-set charges are kept).
+- [x] A public booking by an archived client restores their record instead of creating a duplicate.
+- [x] Booking can't leave a gap under 15 minutes next to blocked time.
+- [x] Record payment has no preselected method: the method is chosen for every payment.
+- [x] Payment report "Owed" is as of the range's last day: payments and credits made later don't reduce it.
+- [x] Blocked time can't be added for a time that has already passed.
+- [x] Archiving a client explains exactly what is still open: a running session, upcoming appointments to cancel, and past appointments to mark No-show or Cancel (with dates).
+- [x] A reschedule link whose appointment no longer exists says so instead of showing "Appointment updated".
+- [x] If the tablet's storage for the app is full, a lasting warning explains that changes aren't being saved (instead of an error page).
+- [x] Saved working hours that can't be read fall back to the standard hours, with a Dashboard notice; backups still work.
+- [x] The app always opens on Book Appointment, and Admin asks for the password every time the app is opened (also right after choosing the password).
+- [x] View Schedule has no Block time button; time is blocked from Edit Hours.
+- [x] Tapping the Book Appointment tab (or the logo) locks Admin, so the public screen never leaves Admin open behind it.
+- [x] View Schedule: Search appointment finds bookings by client name or phone and/or date (newest first) and opens the chosen one on the calendar.
+- [x] Book Appointment, Date & time step: a "Check for specific time availability" search box (placeholder "Enter specific time") sits at the top left, above "Choose date"; typing a time like 7:30 pm, 7:30 or 1930 narrows the dotted days to ones with that start time open. "Choose date" is a plain month calendar (arrows, up to 12 months ahead); days with an opening for the chosen length have a dot. Tapping a day picks its earliest time (or the searched time), and "Choose a time" lists all of the day's open times, grouped Morning / Evening (no Earliest / Latest buttons).
+- [x] Book Appointment, Your details: separate First name and Last name fields (both required, saved as one client name).
+- [x] Required fields across the app show a red asterisk after their label (screen readers hear "required"); unlabeled payment fields got visible labels.
+- [x] Book Appointment confirmation: "Book another appointment" (keeps the client's name and phone) and "Done" (clears the form for the next person).
+- [x] Forgot password: an optional hint set at setup is shown; otherwise the only way back in is erasing the tablet (an automatic copy can be restored afterwards).
+- [x] Removed the Exit Admin button; tapping Book Appointment (or the logo) is how Admin is locked.
+- [x] Appointment status shown by color only (card edge or dot; screen readers and hover still give the name), with a color key on the Dashboard and Schedule. Opening an appointment shows the full status name next to its color.
+- [x] Edit Hours page shows "Change hours for one date" and "Block out time"; the weekly (across-the-board) hours open in a popup from a "Change weekly hours" button.
+- [x] Block out time: "Block entire day" checkbox hides From/To and blocks the whole date (stored as 00:00–23:59, shown as "All day").
+- [x] Start times include exact back-to-back edges off the 15-minute grid (right after an appointment or blocked time ends, or ending right as the next begins or the hours close).
