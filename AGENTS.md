@@ -21,3 +21,8 @@
 - Any new device-storage key holding studio records must be added to `BACKUP_KEYS` in `src/lib/backup.ts` so backups stay complete.
 - Offline support lives in `public/sw.js` (registered from `__root.tsx`, production only, never inside the editor iframe). When adding a page, add its path to `ROUTES` in `public/sw.js` so it opens offline.
 - Never overwrite a client's balance: corrections are `adjustments` (store) with a reason. Pass `store.adjustments` to `clientBalance` and `buildReport` wherever balances are shown.
+
+## This copy is the public DEMO
+
+- This repo is a Lovable remix of the real Electrolysis Scheduler, used only for demos. It deliberately fills itself with fictional sample records (`src/lib/demo.ts`, switched by `DEMO_MODE`), shows a banner with the Admin password ("demo") and a Reset demo button, and never registers the offline service worker. The rule above about never seeding demo records applies to the real app, not here.
+- Never copy this repo's `demo.ts`, `DemoBanner.tsx` or the `DEMO_MODE` wiring in `lock.tsx` / `__root.tsx` back into the real app. Never put real client data here.

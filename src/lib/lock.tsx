@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { RequiredMark } from "@/components/RequiredMark";
 import { applyBackup } from "./backup";
+import { DEMO_MODE, DEMO_PASSWORD, ensureDemoData } from "./demo";
 import {
   autoBackupAvailable,
   deviceSnapshots,
@@ -57,7 +58,11 @@ export function LockProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     // Admin always starts locked when the app opens; the password is asked again every time.
-    setStatus(readLockRecord() ? "locked" : "setup");
+    // The demo fills in its sample records first, so nothing else loads before they exist.
+    void (async () => {
+      if (DEMO_MODE) await ensureDemoData();
+      setStatus(readLockRecord() ? "locked" : "setup");
+    })();
   }, []);
 
   // Admin locks itself after a stretch with no taps or keys, so records aren't left open on an unattended tablet.
@@ -335,6 +340,11 @@ function LockScreen({ status }: { status: Status }) {
             <p className="mt-2 text-sm text-muted-foreground">
               Enter your password to open the dashboard, schedule, hours, clients and billing.
             </p>
+            {DEMO_MODE && (
+              <p className="mt-3 border p-3 text-sm">
+                This is a demo. The password is <span className="font-semibold">{DEMO_PASSWORD}</span>.
+              </p>
+            )}
             <label className="mt-5 block text-sm font-medium" htmlFor="unlock-password">
               Password
               <RequiredMark />

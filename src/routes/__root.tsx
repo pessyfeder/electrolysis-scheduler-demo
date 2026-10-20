@@ -18,6 +18,8 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { AdminGate, LockProvider, useLock } from "../lib/lock";
 import { StoreProvider } from "../lib/store";
 import { Nav } from "../components/Nav";
+import { DemoBanner } from "../components/DemoBanner";
+import { DEMO_MODE } from "../lib/demo";
 import { ActiveSessionBanner } from "../components/ActiveSessionBanner";
 
 function NotFoundComponent() {
@@ -130,7 +132,8 @@ function RootShell({ children }: { children: ReactNode }) {
  */
 function useOfflineSupport() {
   useEffect(() => {
-    if (!import.meta.env.PROD || !("serviceWorker" in navigator) || window.self !== window.top) return;
+    // The demo is never installed for offline use, so a stale copy can't outlive an update.
+    if (DEMO_MODE || !import.meta.env.PROD || !("serviceWorker" in navigator) || window.self !== window.top) return;
     navigator.serviceWorker.register("/sw.js").catch((error) => console.warn("Offline support unavailable", error));
   }, []);
 }
@@ -152,6 +155,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <LockProvider>
         <StoreProvider>
+          <DemoBanner />
           <Nav />
           <GatedContent />
           <Toaster position="top-center" richColors />
